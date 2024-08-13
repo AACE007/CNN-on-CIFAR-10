@@ -16,3 +16,6 @@ Frog: 6
 Horse: 7
 Ship: 8
 Truck: 9
+
+
+# write about resnet 50 model about it 50 layer
