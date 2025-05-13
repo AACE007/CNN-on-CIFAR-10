@@ -39,4 +39,51 @@ Fine-Tuning: Fine-tunes the pre-trained model to adapt it to the specific charac
 High Accuracy: Achieves high accuracy in image classification.
 
 
+# CIFAR-10 Object Recognition Project Steps
+
+Here's a clear explanation of the steps involved in your object recognition project:
+
+## 1. Data Exploration & Preparation
+- Loaded the CIFAR-10 dataset containing 50,000 32x32 color images across 10 object categories
+- Verified that the data is balanced (5,000 images per class)
+- Created a dictionary to map text labels to numerical values (label encoding)
+- Loaded image files from the training folder and converted them to NumPy arrays
+
+## 2. Data Preprocessing
+- Converted all images and labels to NumPy arrays for faster processing
+- Split the dataset into training (80%) and testing (20%) sets using train_test_split
+- Normalized pixel values by dividing by 255 to scale them between 0-1
+
+## 3. Transfer Learning Implementation
+- Used pre-trained ResNet50 architecture with ImageNet weights as the base model
+- Removed the top classification layers from ResNet50 to use only the feature extraction part
+- The base model expects 256×256 images, but CIFAR-10 has 32×32 images
+
+## 4. Model Architecture Design
+- Added UpSampling2D layers to resize the 32×32 images to 256×256 (required by ResNet50)
+- Connected the ResNet50 convolutional base to extract features
+- Added a Flatten layer to convert 2D feature maps to 1D feature vectors
+- Implemented BatchNormalization layers to stabilize training
+- Built a custom classifier with:
+  * Dense layer with 128 neurons and ReLU activation
+  * Dropout (0.5) to prevent overfitting
+  * Dense layer with 64 neurons and ReLU activation
+  * Final Dense layer with 10 neurons (one per class) and softmax activation
+
+## 5. Model Training
+- Compiled the model with:
+  * RMSprop optimizer with a low learning rate (2e-5)
+  * Sparse categorical cross-entropy loss function
+  * Accuracy as the evaluation metric
+- Trained for 10 epochs with 10% validation split
+- Monitored both training and validation metrics to avoid overfitting
+
+## 6. Performance Evaluation
+- Evaluated model on the test set, achieving 93.3% accuracy
+- Created visualizations to compare:
+  * Training vs. validation loss
+  * Training vs. validation accuracy
+- These plots help verify the model isn't overfitting
+
+The project successfully demonstrates practical implementation of transfer learning by adapting a powerful pre-trained architecture (ResNet50) to a smaller dataset, achieving high accuracy with relatively minimal training.
 
