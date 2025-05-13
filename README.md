@@ -39,9 +39,8 @@ Fine-Tuning: Fine-tunes the pre-trained model to adapt it to the specific charac
 High Accuracy: Achieves high accuracy in image classification.
 
 
-# CIFAR-10 Object Recognition Project Steps
 
-Here's a clear explanation of the steps involved in your object recognition project:
+
 
 ## 1. Data Exploration & Preparation
 - Loaded the CIFAR-10 dataset containing 50,000 32x32 color images across 10 object categories
